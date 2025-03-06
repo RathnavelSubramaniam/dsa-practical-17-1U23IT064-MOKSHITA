@@ -10,24 +10,48 @@ public class LinkedQueue {
     }
     Node front;
     Node rear;
-    LinkedQueue() 
-    { 
-        this.front = null; 
+    LinkedQueue()
+    {
+        this.front = null;
         this.rear  = null;
     }
     public boolean isEmpty()
     {
-        //TYPE YOUR CODE HERE
+        if(front==null)
+return true;
+else
+return false;
     }
-    public void enQueue() 
+    public void enQueue(int data)
     {
-        //TYPE YOUR CODE HERE
+       Node newNode = new Node(data);
+if (rear == null) {
+front = rear = newNode;
+return;
+}
+else
+{
+rear.next = newNode;
+rear = newNode;
+}
     }
-    public int deQueue() 
+    public int deQueue()
     {
-       //TYPE YOUR CODE HERE
+       int data=-1;
+if (isEmpty()) {
+System.out.print("\nQueue Underflow");
+}
+else
+{
+Node temp = front;
+data=temp.data;
+front = front.next;
+}
+if (front == null)
+rear = null;
+return data;
      }
-    
+   
 public static void main(String[] args) {
     LinkedQueue queue = new LinkedQueue();
         Scanner scanner = new Scanner(System.in);
@@ -51,11 +75,11 @@ public static void main(String[] args) {
     System.out.println("1.EnQueue");
     System.out.println("2.DeQueue");
     System.out.println("3.Exit");
-    System.out.println("Enter your choice:"); 
+    System.out.println("Enter your choice:");
     ch= scanner.nextInt();
     switch(ch)
     {
-        case 1: 
+        case 1:
             System.out.println("Enter the element to insert:");
             data=scanner.nextInt();
             queue.enQueue(data);
